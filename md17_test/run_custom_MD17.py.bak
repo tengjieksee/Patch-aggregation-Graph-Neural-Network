@@ -59,7 +59,7 @@ dataset = MD17(root='dataset/', name=name_dataset)
 print("Start")
 print(name_dataset)
 
-
+print("m_465_dimenetpp (100 motifs)")
 ##################http://quantum-machine.org/gdml/data/npz/
 #dataset = MD17(root='dataset/', name='md17_aspirin')
 #print(len(dataset.data.y))#211762
