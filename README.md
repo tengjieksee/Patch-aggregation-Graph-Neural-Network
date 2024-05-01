@@ -20,7 +20,7 @@ This repository hosts the implementation of Patch Aggregation for Graph Neural N
   - Medicinal Chemistry, Monash Institute of Pharmaceutical Sciences, Monash University, Australia.
 
 ## Usage
-
+- pip install -r `requirements.txt`
 - For QM9 test, navigate to the `qm9_test` folder.
 - For MD17 test, navigate to the `md17_test` folder.
 
