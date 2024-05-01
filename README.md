@@ -8,6 +8,10 @@
 
 This repository hosts the implementation of Patch Aggregation for Graph Neural Network, developed for chemical property prediction.
 
+### Paper
+
+The paper can be found in xxx.
+
 ## Authors
 
 - **Teng Jiek See**
