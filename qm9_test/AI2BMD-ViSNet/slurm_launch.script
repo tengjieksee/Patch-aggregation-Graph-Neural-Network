@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=qm9_visnet_m_0_task_0
+#SBATCH --account=mo99
+#SBATCH --time=72:00:00
+#SBATCH --ntasks-per-node=6
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:1
+#SBATCH --partition=m3g
+module load miniforge3
+mamba activate visnet_env
+nvidia-smi
+CUDA_VISIBLE_DEVICES=0 python train.py --conf ./examples/ViSNet-QM9.yml --dataset-arg energy_U0 --dataset-root ./data_folder --log-dir ./log
+sleep $((32 * 60 * 60))

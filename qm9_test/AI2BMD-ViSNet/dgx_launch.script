@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=m_10
+#SBATCH --account=mo98
+#SBATCH --time=24:00:00
+#SBATCH --ntasks=8
+#SBATCH --cpus-per-task=5
+#SBATCH --gres=gpu:8
+#SBATCH --partition=dgx
+#SBATCH --qos=dgx
+#SBATCH --constraint=c7
+module load anaconda/2019.03-Python3.7-gcc5
+source activate /scratch/mo99/tsee0001/miniconda/conda/envs/visnet_go_0
+python --version
+nvidia-smi
+sleep $((1 * 60 * 60))
+nvidia-smi
+sleep $((32 * 60 * 60))

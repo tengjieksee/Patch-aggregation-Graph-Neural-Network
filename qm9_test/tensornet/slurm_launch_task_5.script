@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --job-name=qm9_tensornet_m_17_task_5
+#SBATCH --account=mo99
+#SBATCH --time=24:00:00
+#SBATCH --ntasks-per-node=6
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:1
+#SBATCH --partition=m3g
+module load miniforge3
+mamba activate tensornet_env_1
+nvidia-smi
+CUDA_VISIBLE_DEVICES=0 torchmd-train --conf ./yaml_folder/m_9-QM9_task_5.yaml --log-dir ./result_folder/output_m_17-QM9_task_5

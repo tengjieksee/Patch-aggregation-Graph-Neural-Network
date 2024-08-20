@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH --job-name=m_tensornet_original_benchmark
+#SBATCH --account=mo98
+#SBATCH --time=24:00:00
+#SBATCH --ntasks=8
+#SBATCH --cpus-per-task=5
+#SBATCH --gres=gpu:8
+#SBATCH --partition=dgx
+#SBATCH --qos=dgx
+#SBATCH --constraint=c7
+module load miniforge3
+mamba activate tensornet_env
+CUDA_VISIBLE_DEVICES=0 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_0.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_0/&
+CUDA_VISIBLE_DEVICES=1 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_1.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_1/&
+CUDA_VISIBLE_DEVICES=2 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_2.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_2/&
+CUDA_VISIBLE_DEVICES=3 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_3.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_3/&
+CUDA_VISIBLE_DEVICES=4 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_4.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_4/&
+CUDA_VISIBLE_DEVICES=5 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_5.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_5/&
+CUDA_VISIBLE_DEVICES=6 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_6.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_6/&
+CUDA_VISIBLE_DEVICES=7 torchmd-train --conf ./yaml_folder/m_0-TensorNet-QM9_task_7.yaml --log-dir ./result_folder/output_m_0-TensorNet-QM9_task_7/&
+sleep $((1 * 60 * 60))
+nvidia-smi
+sleep $((3200 * 60 * 60))
+
+##conda create --yes -p /fs03/mo99/tsee0001/miniconda/conda/envs/tensornet_env_go/
+##conda activate /fs03/mo99/tsee0001/miniconda/conda/envs/tensornet_env_go
+##conda create --yes -p /fs03/mo99/tsee0001/miniconda/conda/envs/tensornet_env_go_1/ --clone /fs03/mo99/tsee0001/miniconda/conda/envs/visnet_go_0
+
+

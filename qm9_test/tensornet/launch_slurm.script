@@ -1,0 +1,11 @@
+#!/bin/bash
+#SBATCH --job-name=qm9_tensornet
+#SBATCH --account=mo99
+#SBATCH --time=72:00:00
+#SBATCH --ntasks=6
+#SBATCH --cpus-per-task=1
+#SBATCH --gres=gpu:1
+#SBATCH --partition=m3g
+mamba activate tensornet_env
+nvidia-smi
+CUDA_VISIBLE_DEVICES=-1 torchmd-train --conf ./examples/ET-QM9.yaml --log-dir ./output/
